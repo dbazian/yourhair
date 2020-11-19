@@ -4,10 +4,9 @@ import clientList from "../data/clientList";
 import ClientItem from "./components/ClientItem";
 
 const ClientScreen = (props) => {
-  console.log(ClientList);
   return (
     <View style={styles.full}>
-      <Text>Clients</Text>
+      <Text style={styles.text}>Clients</Text>
       <FlatList
         data={clientList}
         keyExtractor={(item) => item.index}
@@ -22,6 +21,10 @@ const styles = StyleSheet.create({
     paddingVertical: 100,
     height: "100%",
     backgroundColor: "pink",
+  },
+  text: {
+    textAlign: "center",
+    fontSize: 24,
   },
 });
 
