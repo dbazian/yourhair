@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { Calendar, CalendarList, Agenda } from "react-native-calendars";
 
-const CalenderScreen = (props) => {
+const CalendarScreen = (props) => {
   return (
     <View style={styles.full}>
       <Text style={styles.text}>CalenderScreen</Text>
@@ -50,4 +50,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CalenderScreen;
+export default CalendarScreen;
