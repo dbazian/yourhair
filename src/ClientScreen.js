@@ -6,7 +6,6 @@ import ClientItem from "./components/ClientItem";
 const ClientScreen = (props) => {
   return (
     <View style={styles.full}>
-      <Text style={styles.text}>Clients</Text>
       <FlatList
         data={clientList}
         keyExtractor={(item) => item.index}
@@ -18,7 +17,6 @@ const ClientScreen = (props) => {
 
 const styles = StyleSheet.create({
   full: {
-    paddingVertical: 100,
     height: "100%",
     backgroundColor: "pink",
   },

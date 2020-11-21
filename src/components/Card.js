@@ -9,9 +9,8 @@ const styles = StyleSheet.create({
   container: {
     borderColor: "black",
     borderWidth: 3,
-    marginVertical: 10,
+    marginVertical: 5,
     width: "100%",
-    justifyContent: "space-evenly",
     flexDirection: "row",
     padding: 10,
     shadowColor: "white",

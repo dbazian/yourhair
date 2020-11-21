@@ -335,12 +335,12 @@ PODS:
     - React-jsi (= 0.63.3)
   - RNCMaskedView (0.1.10):
     - React
-  - RNGestureHandler (1.7.0):
+  - RNGestureHandler (1.8.0):
     - React
   - RNReanimated (1.13.2):
     - React-Core
-  - RNScreens (2.10.1):
-    - React
+  - RNScreens (2.15.0):
+    - React-Core
   - RNSVG (12.1.0):
     - React
   - UMAppLoader (1.3.0)
@@ -626,9 +626,9 @@ SPEC CHECKSUMS:
   React-RCTVibration: 8e9fb25724a0805107fc1acc9075e26f814df454
   ReactCommon: 4167844018c9ed375cc01a843e9ee564399e53c3
   RNCMaskedView: f5c7d14d6847b7b44853f7acb6284c1da30a3459
-  RNGestureHandler: b6b359bb800ae399a9c8b27032bdbf7c18f08a08
+  RNGestureHandler: 7a5833d0f788dbd107fbb913e09aa0c1ff333c39
   RNReanimated: e03f7425cb7a38dcf1b644d680d1bfc91c3337ad
-  RNScreens: b748efec66e095134c7166ca333b628cd7e6f3e2
+  RNScreens: 2ad555d4d9fa10b91bb765ca07fe9b29d59573f0
   RNSVG: ce9d996113475209013317e48b05c21ee988d42e
   UMAppLoader: 939854a42e69527ee11dd17b39ebafcbfbefd05c
   UMBarCodeScannerInterface: 198ced513a0cf8143d822620f1620bce467d02be
