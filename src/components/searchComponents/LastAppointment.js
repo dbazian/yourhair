@@ -1,3 +1,4 @@
+import { faWhistle } from "@fortawesome/pro-duotone-svg-icons";
 import React, { useState, useEffect } from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import useDropdown from "../Dropdown";
@@ -8,7 +9,7 @@ const LastAppointment = () => {
     "Descending",
   ]);
   const [selectedAppointmentMonth, AppointmentMonthDropdown, setSelectedAppointmentMonth] = useDropdown(
-    "By Month",
+    "All Months",
     null,
     [
       "January",
@@ -25,11 +26,11 @@ const LastAppointment = () => {
       "December",
     ]
   );
-  const [selectedAppointmentYear, AppointmentYearDropdown, setSelectedAppointmentYear] = useDropdown("By Year", null, [
-    "2020",
-    "2019",
-    "2018",
-  ]);
+  const [selectedAppointmentYear, AppointmentYearDropdown, setSelectedAppointmentYear] = useDropdown(
+    "All Years",
+    null,
+    ["2020", "2019", "2018"]
+  );
   const [openLastApp, setOpenLastApp] = useState(false);
   const toggleOpenApp = () => {
     setOpenLastApp(!openLastApp);
@@ -46,9 +47,9 @@ const LastAppointment = () => {
   };
 
   return (
-    <View>
+    <View style={styles.la}>
       <TouchableOpacity onPress={toggleOpenApp}>
-        <Text>Sort By Last Appointment</Text>
+        <Text style={styles.text}>Sort By Last Appointment</Text>
       </TouchableOpacity>
       {openLastApp && (
         <View>
@@ -61,6 +62,15 @@ const LastAppointment = () => {
   );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  la: {
+    backgroundColor: "white",
+    padding: 5,
+    borderWidth: 2,
+  },
+  text: {
+    fontSize: 20,
+  },
+});
 
 export default LastAppointment;

@@ -1,5 +1,6 @@
+import { faWhistle } from "@fortawesome/pro-duotone-svg-icons";
 import React, { useState } from "react";
-import { View } from "react-native";
+import { View, StyleSheet } from "react-native";
 import RNPickerSelect from "react-native-picker-select";
 
 const useDropdown = (label, defaultState, options) => {
@@ -8,6 +9,15 @@ const useDropdown = (label, defaultState, options) => {
   const DropdownMaker = (props) => (
     <View style={[props.style]}>
       <RNPickerSelect
+        style={{
+          inputIOS: [styles.text],
+          inputAndroid: [styles.text],
+          placeholder: {
+            fontSize: 20,
+            color: "pink",
+            padding: 5,
+          },
+        }}
         useNativeAndroidPickerStyle={false}
         value={selectedValue}
         placeholder={{ label }}
@@ -19,5 +29,13 @@ const useDropdown = (label, defaultState, options) => {
   );
   return [selectedValue, DropdownMaker, setSelectedValue];
 };
+
+const styles = StyleSheet.create({
+  text: {
+    fontSize: 20,
+    color: "pink",
+    padding: 5,
+  },
+});
 
 export default useDropdown;

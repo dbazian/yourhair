@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { View, Button, Text, TouchableOpacity, StyleSheet } from "react-native";
-import useDropdown from "./components/Dropdown";
 import clientList from "../data/clientList";
 import LastAppointment from "./components/searchComponents/LastAppointment";
 
