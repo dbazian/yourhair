@@ -1,13 +1,15 @@
 import React from "react";
 import { View, Text, StyleSheet, FlatList, Button } from "react-native";
-import clientList from "../data/clientList";
 import ClientItem from "./components/ClientItem";
+import { useSelector, useDispatch } from "react-redux";
 
 const ClientScreen = (props) => {
+  const clientData = useSelector((state) => state.clientData.clientList);
+
   return (
     <View style={styles.full}>
       <FlatList
-        data={clientList}
+        data={clientData}
         keyExtractor={(item) => item.index}
         renderItem={(itemData) => <ClientItem items={itemData.item} />}
       />

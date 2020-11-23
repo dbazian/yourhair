@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { View, Button, Text, TouchableOpacity, StyleSheet } from "react-native";
-import clientList from "../data/clientList";
 import LastAppointment from "./components/searchComponents/LastAppointment";
 
 const ClientSearchScreen = ({ navigation }) => {
   return (
     <View style={styles.full}>
       <LastAppointment />
-      <Button onPress={() => navigation.navigate("Clients")} title="Search"></Button>
     </View>
   );
 };
