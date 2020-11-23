@@ -1,11 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { View, Button, Text, TouchableOpacity, StyleSheet } from "react-native";
+import { View, StyleSheet, Text } from "react-native";
 import LastAppointment from "./components/searchComponents/LastAppointment";
+import Name from "./components/searchComponents/Name";
 
-const ClientSearchScreen = ({ navigation }) => {
+const ClientSearchScreen = (props, { navigation }) => {
   return (
     <View style={styles.full}>
-      <LastAppointment />
+      <View style={styles.section}>
+        <Name />
+      </View>
+      <View style={styles.section}>
+        <LastAppointment />
+      </View>
     </View>
   );
 };
@@ -15,6 +21,11 @@ const styles = StyleSheet.create({
     backgroundColor: "pink",
     height: "100%",
     alignItems: "center",
+  },
+  section: {
+    backgroundColor: "white",
+    alignItems: "center",
+    marginVertical: 50,
   },
 });
 
