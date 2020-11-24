@@ -7,6 +7,7 @@ const AddScreen = () => {
       <TextInput style={styles.textInput} placeholder={"First Name"} />
       <TextInput style={styles.textInput} placeholder={"Last Name"} />
       <TextInput style={styles.textInput} placeholder={"Address"} />
+      <TextInput style={styles.textInput} placeholder={"City"} />
       <TextInput style={styles.textInput} placeholder={"Phone Number"} />
       <TextInput style={styles.textInput} placeholder={"Email"} />
       <Text>(future add)Products Used</Text>
