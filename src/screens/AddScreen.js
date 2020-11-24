@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet, TextInput, Button } from "react-native";
 
-const AddScreen = (props) => {
+const AddScreen = () => {
   return (
     <View style={styles.full}>
       <TextInput style={styles.textInput} placeholder={"First Name"} />

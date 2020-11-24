@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { View, StyleSheet, Text, FlatList } from "react-native";
-import LastAppointment from "../components/searchComponents/LastAppointment";
-import Name from "../components/searchComponents/Name";
-import { useSelector, useDispatch } from "react-redux";
+import React from "react";
+import { View, StyleSheet, FlatList } from "react-native";
+import { useSelector } from "react-redux";
+import Name from "../components/Name";
 import ClientItem from "../components/ClientItem";
 
-const ViewScreen = (props, { navigation }) => {
+const ViewScreen = () => {
   const clientData = useSelector((state) => state.clientData.clientList);
 
   return (
@@ -13,7 +12,6 @@ const ViewScreen = (props, { navigation }) => {
       <View style={styles.section}>
         <Name />
       </View>
-      <View style={styles.section}></View>
       <View style={styles.full2}>
         <FlatList
           data={clientData}
@@ -34,7 +32,8 @@ const styles = StyleSheet.create({
   section: {
     backgroundColor: "white",
     alignItems: "center",
-    marginVertical: 50,
+    marginTop: 50,
+    marginBottom: 100,
   },
   full2: {
     height: "100%",

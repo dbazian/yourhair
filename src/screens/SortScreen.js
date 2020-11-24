@@ -1,18 +1,15 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
-import ClientCard from "../components/ClientCard";
+import { View, StyleSheet } from "react-native";
+import SortCard from "../components/SortCard";
+import { faArrowAltUp, faArrowAltDown } from "@fortawesome/pro-duotone-svg-icons";
 
-const SortScreen = (props) => {
+const SortScreen = () => {
   return (
     <View style={styles.full}>
-      <ClientCard title={"Total Spent Descending"} />
-      <ClientCard style={styles.color1} title={"Yearly Spent"} />
-      <ClientCard style={styles.color2} title={"Last Name Descending"} />
-      <ClientCard style={styles.color3} title={"Last Name Ascending"} />
-      <ClientCard style={styles.color} title={"Last Appointment Ascending"} />
-      <ClientCard style={styles.color1} title={"City"} />
-      <ClientCard style={styles.color2} title={"Product Sales"} />
-      <ClientCard style={styles.color3} title={"Most Used Products"} />
+      <SortCard style={styles.color2} iconName={faArrowAltDown} title={"Last Name"} />
+      <SortCard style={styles.color3} iconName={faArrowAltUp} title={"Last Name"} />
+      <SortCard style={styles.color} iconName={faArrowAltUp} title={"Last Appointment"} />
+      <SortCard style={styles.color1} iconName={faArrowAltDown} title={"City"} />
     </View>
   );
 };
