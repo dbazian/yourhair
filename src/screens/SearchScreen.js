@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import Name from "../components/Name";
 import ClientItem from "../components/ClientItem";
 
-const ViewScreen = () => {
+const SearchScreen = () => {
   const clientData = useSelector((state) => state.clientData.clientList);
 
   return (
@@ -46,4 +46,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ViewScreen;
+export default SearchScreen;
