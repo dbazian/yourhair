@@ -1,7 +1,7 @@
 export const GET_CLIENTS = "GET_CLIENTS";
-export const REMOVE_CLIENTS = "REMOVE_CLIENTS";
-export const ADD_CLIENTS = "ADD_CLIENTS";
-export const UPDATE_CLIENTS = "UPDATE_CLIENTS";
+export const REMOVE_CLIENT = "REMOVE_CLIENT";
+export const ADD_CLIENT = "ADD_CLIENT";
+export const UPDATE_CLIENT = "UPDATE_CLIENT";
 
 export const getClients = () => {
   return {
@@ -11,18 +11,24 @@ export const getClients = () => {
 
 export const removeClients = () => {
   return {
-    type: REMOVE_CLIENTS,
+    type: REMOVE_CLIENT,
   };
 };
 
-export const addClients = () => {
+export const addClients = (firstName, lastName, address, city, phoneNumber, email) => {
   return {
-    type: ADD_CLIENTS,
+    type: ADD_CLIENT,
+    firstName,
+    lastName,
+    address,
+    city,
+    phonenUmber,
+    email,
   };
 };
 
 export const updateClients = () => {
   return {
-    type: UPDATE_CLIENTS,
+    type: UPDATE_CLIENT,
   };
 };
