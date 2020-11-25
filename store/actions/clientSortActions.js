@@ -16,9 +16,3 @@ export const lastAppointmentDescending = () => {
     type: LAST_APPOINTMENT_DESCENDING,
   };
 };
-
-export const lastNameAscending = () => {
-  return {
-    type: 
-  }
-}

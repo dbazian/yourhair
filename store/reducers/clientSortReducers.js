@@ -1,4 +1,11 @@
-import { FILTER_LAST_APPOINTMENT } from "../actions/lastAppointmentActions";
+import {
+  LAST_APPOINTMENT_ASCENDING,
+  LAST_APPOINTMENT_DESCENDING,
+  LAST_NAME_ASCENDING,
+  LAST_NAME_DESCENDING,
+  CITY_ASCENDING,
+  CITYDESCENDING,
+} from "../actions/clientSortActions";
 import clientList from "../../data/clientList";
 
 const initialState = {
@@ -6,26 +13,23 @@ const initialState = {
   filteredList: [],
 };
 
-const filterLastAppointment = (state = initialState, action) => {
-  console.log("reducer");
-  console.log(action.order);
+const clientSortReducers = (state = initialState, action) => {
   switch (action.type) {
-    case FILTER_LAST_APPOINTMENT:
-      if (action.order === "Ascending") {
-        state.filteredList = state.clientList.sort((a, b) => {
-          a = new Date(a.lastAppointment);
-          b = new Date(b.lastAppointment);
-          return a - b;
-        });
-      } else if (action.order === "Descending") {
-        state.filteredList = state.clientList.sort((a, b) => {
-          a = new Date(a.lastAppointment);
-          b = new Date(b.lastAppointment);
-          return b - a;
-        });
-      }
+    case LAST_NAME_ASCENDING:
+      state.filteredList = state.clientList.sort((a, b) => {
+        a = new Date(a.lastAppointment);
+        b = new Date(b.lastAppointment);
+        return a - b;
+      });
+    case LAST_NAME_DESCENDING:
+      state.filteredList = state.clientList.sort((a, b) => {
+        a = new Date(a.lastAppointment);
+        b = new Date(b.lastAppointment);
+        return b - a;
+      });
     default:
       return state;
   }
 };
-export default filterLastAppointment;
+
+export default clientSortReducers;

@@ -1,11 +1,11 @@
 import * as React from "react";
 import Navigation from "./navigation/Navigation";
-import { createStore, combineReducers, applyMiddleware } from "redux";
+import { createStore, combineReducers } from "redux";
 import { Provider } from "react-redux";
-import lastAppointmentReducer from "./store/reducers/lastAppointmentReducer";
+import clientSortReducers from "./store/reducers/clientSortReducers";
 
 const rootReducer = combineReducers({
-  clientData: lastAppointmentReducer,
+  clientData: clientSortReducers,
 });
 const store = createStore(rootReducer);
 

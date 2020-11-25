@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
-import { filterLastAppointment } from "../../store/actions/lastAppointmentActions";
 import { useSelector, useDispatch } from "react-redux";
 import { View, Text, Button, TouchableOpacity, StyleSheet } from "react-native";
 import useDropdown from "./Dropdown";
+
 const LastAppointment = () => {
   const navigation = useNavigation();
   const [selectedAppointment, AppointmentDropdown, setSelectedAppointment] = useDropdown("By Order", null, [
@@ -64,7 +64,6 @@ const LastAppointment = () => {
           <Button
             onPress={() => {
               navigation.navigate("Clients");
-              dispatch(filterLastAppointment(selectedAppointment, selectedAppointmentMonth, selectedAppointmentYear));
             }}
             title="Search"></Button>
         </View>

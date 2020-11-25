@@ -1,4 +1,3 @@
-import { faWhistle } from "@fortawesome/pro-duotone-svg-icons";
 import React, { useState } from "react";
 import { View, StyleSheet } from "react-native";
 import RNPickerSelect from "react-native-picker-select";
