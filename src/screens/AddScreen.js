@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet, TextInput, Button } from "react-native";
 import { useDispatch } from "react-redux";
-import clientList from "../../data/clientList";
-import { getClients, deleteClients, addClients, updateClients } from "../../store/actions/clientListActions";
+import { getClients, deleteClients, addClient, updateClients } from "../../store/actions/clientListActions";
+import ClientModel from "../../models/ClientModel";
 
 const AddScreen = () => {
   const [firstName, setFirstName] = useState("");
@@ -14,9 +14,9 @@ const AddScreen = () => {
 
   const dispatch = useDispatch();
 
+  const clientList = new ClientModel(firstName, lastName, address, city, phoneNumber, email);
   const addClientHandler = () => {
-    console.log(firstName, lastName, address, city, phoneNumber, email);
-    dispatch(addClients(firstName, lastName, address, city, phoneNumber, email));
+    dispatch(addClient(clientList));
   };
 
   return (

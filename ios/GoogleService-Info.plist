@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>363249512646-rm269u1kc5tn816q2q1p38v97hulivil.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.363249512646-rm269u1kc5tn816q2q1p38v97hulivil</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBmnmi2x43GzKbz65vdYZQYxN54F4jl3EQ</string>
+	<key>GCM_SENDER_ID</key>
+	<string>363249512646</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>org.name.yourhaircalled</string>
+	<key>PROJECT_ID</key>
+	<string>yourhaircalled</string>
+	<key>STORAGE_BUCKET</key>
+	<string>yourhaircalled.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:363249512646:ios:67c864797246ee26c827c7</string>
+	<key>DATABASE_URL</key>
+	<string>https://yourhaircalled.firebaseio.com</string>
+</dict>
+</plist>

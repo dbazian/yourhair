@@ -9,25 +9,17 @@ export const getClients = () => {
   };
 };
 
-export const removeClients = () => {
+export const removeClient = () => {
   return {
     type: REMOVE_CLIENT,
   };
 };
 
-export const addClients = (firstName, lastName, address, city, phoneNumber, email) => {
-  return {
-    type: ADD_CLIENT,
-    firstName,
-    lastName,
-    address,
-    city,
-    phonenUmber,
-    email,
-  };
+export const addClient = (clientList) => {
+  console.log(clientList);
 };
 
-export const updateClients = () => {
+export const updateClient = () => {
   return {
     type: UPDATE_CLIENT,
   };
