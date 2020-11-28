@@ -2,20 +2,12 @@ import React, { useState } from "react";
 import { View, Text, StyleSheet, TextInput, Button } from "react-native";
 import { useDispatch } from "react-redux";
 import { addClient } from "../../store/actions/clientListActions";
-import ClientModel from "../../models/ClientModel";
 import { useForm, Controller } from "react-hook-form";
 
 const AddScreen = () => {
   const { control, handleSubmit, errors } = useForm();
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [address, setAddress] = useState("");
-  const [city, setCity] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [email, setEmail] = useState("");
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => dispatch(addClient(data));
   const dispatch = useDispatch();
-  const clientList = new ClientModel(firstName, lastName, address, city, phoneNumber, email);
 
   return (
     <View style={styles.full}>
@@ -31,10 +23,11 @@ const AddScreen = () => {
           />
         )}
         name="firstName"
-        rules={{ required: true }}
+        rules={{ required: true, minLength: 2, maxLength: 20 }}
         defaultValue=""
       />
       {errors.firstName && <Text style={styles.errorText}>This is required.</Text>}
+
       <Controller
         control={control}
         render={({ onChange, onBlur, value }) => (
@@ -47,11 +40,26 @@ const AddScreen = () => {
           />
         )}
         name="lastName"
-        rules={{ required: true }}
+        rules={{ required: true, minLength: 2, maxLength: 20 }}
         defaultValue=""
       />
-      {errors.firstName && <Text style={styles.errorText}>This is required.</Text>}
-      <TextInput value={address} onChangeText={(e) => setAddress(e)} style={styles.textInput} placeholder={"Address"} />
+      {errors.lastName && <Text style={styles.errorText}>This is required.</Text>}
+      <Controller
+        control={control}
+        render={({ onChange, onBlur, value }) => (
+          <TextInput
+            value={value}
+            onBlur={onBlur}
+            onChangeText={(value) => onChange(value)}
+            style={styles.textInput}
+            placeholder={"Address"}
+          />
+        )}
+        name="address"
+        rules={{ required: false, maxLength: 20 }}
+        defaultValue=""
+      />
+      {errors.address && <Text style={styles.errorText}></Text>}
       <Controller
         control={control}
         render={({ onChange, onBlur, value }) => (
@@ -64,20 +72,42 @@ const AddScreen = () => {
           />
         )}
         name="city"
-        rules={{ required: true }}
+        rules={{ required: false, maxLength: 20 }}
         defaultValue=""
       />
-      {errors.firstName && <Text style={styles.errorText}>This is required.</Text>}
-      <TextInput
-        value={phoneNumber}
-        onChangeText={(e) => setPhoneNumber(e)}
-        style={styles.textInput}
-        placeholder={"Phone Number"}
+      {errors.city && <Text style={styles.errorText}></Text>}
+      <Controller
+        control={control}
+        render={({ onChange, onBlur, value }) => (
+          <TextInput
+            value={value}
+            onBlur={onBlur}
+            onChangeText={(value) => onChange(value)}
+            style={styles.textInput}
+            placeholder={"phoneNumber"}
+          />
+        )}
+        name="phoneNumber"
+        rules={{ required: true, minLength: 10, maxLength: 10 }}
+        defaultValue=""
       />
-      <TextInput value={email} onChangeText={(e) => setEmail(e)} style={styles.textInput} placeholder={"Email"} />
-      <Text>(future add)Products Used</Text>
-      <Text>(future add)Total Spent</Text>
-      <Text>(future add)Formula</Text>
+      {errors.phoneNumber && <Text style={styles.errorText}>This is required.</Text>}
+      <Controller
+        control={control}
+        render={({ onChange, onBlur, value }) => (
+          <TextInput
+            value={value}
+            onBlur={onBlur}
+            onChangeText={(value) => onChange(value)}
+            style={styles.textInput}
+            placeholder={"Email"}
+          />
+        )}
+        name="email"
+        rules={{ required: false, maxLength: 20 }}
+        defaultValue=""
+      />
+      {errors.email && <Text style={styles.errorText}>This is required.</Text>}
       <Button style={styles.button} onPress={handleSubmit(onSubmit)} title="Add Client"></Button>
     </View>
   );
