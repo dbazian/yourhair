@@ -6,7 +6,7 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from "react-nat
 const Name = (props) => {
   return (
     <View style={styles.viewContainer}>
-      <Text>Search By Name</Text>
+      <Text style={styles.text}>Search By Name</Text>
       <AutoComplete
         style={[styles.formBox, props.style]}
         listStyle={styles.listStyle}
@@ -27,6 +27,10 @@ const Name = (props) => {
 };
 
 const styles = StyleSheet.create({
+  text: {
+    color: "pink",
+    fontSize: 20,
+  },
   formBox: {
     backgroundColor: "white",
     textAlign: "center",

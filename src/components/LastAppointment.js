@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { View, Text, Button, TouchableOpacity, StyleSheet } from "react-native";
 import useDropdown from "./Dropdown";
 

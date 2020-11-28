@@ -1,3 +1,7 @@
+import Axios from "axios";
+
+import axios from "axios";
+
 export const GET_CLIENTS = "GET_CLIENTS";
 export const REMOVE_CLIENT = "REMOVE_CLIENT";
 export const ADD_CLIENT = "ADD_CLIENT";
@@ -16,7 +20,15 @@ export const removeClient = () => {
 };
 
 export const addClient = (clientList) => {
-  console.log(clientList);
+  return async (dispatch, getState) => {
+    await axios
+      .post("https://yourhaircalled.firebaseio.com/clients/.json", {
+        clientList,
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 };
 
 export const updateClient = () => {

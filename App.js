@@ -1,13 +1,17 @@
 import * as React from "react";
 import Navigation from "./navigation/Navigation";
-import { createStore, combineReducers } from "redux";
+import { createStore, combineReducers, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import clientSortReducers from "./store/reducers/clientSortReducers";
+import clientListReducers from "./store/reducers/clientListReducers";
+import thunk from "redux-thunk";
 
 const rootReducer = combineReducers({
-  clientData: clientSortReducers,
+  clientSort: clientSortReducers,
+  clientList: clientListReducers,
 });
-const store = createStore(rootReducer);
+
+const store = createStore(rootReducer, applyMiddleware(thunk));
 
 function App() {
   return (

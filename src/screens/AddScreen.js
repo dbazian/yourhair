@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet, TextInput, Button } from "react-native";
 import { useDispatch } from "react-redux";
-import { getClients, deleteClients, addClient, updateClients } from "../../store/actions/clientListActions";
+import { addClient } from "../../store/actions/clientListActions";
 import ClientModel from "../../models/ClientModel";
 
 const AddScreen = () => {

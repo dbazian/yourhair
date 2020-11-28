@@ -6,10 +6,9 @@ import {
   CITY_ASCENDING,
   CITYDESCENDING,
 } from "../actions/clientSortActions";
-import clientList from "../../data/clientList";
 
 const initialState = {
-  clientList: clientList,
+  clientList: [],
   filteredList: [],
 };
 

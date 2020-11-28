@@ -12,6 +12,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
     "@fortawesome/pro-duotone-svg-icons": "^5.15.1",
     "@fortawesome/react-native-fontawesome": "^0.2.6",
+    "@react-native-community/async-storage": "^1.12.1",
     "@react-native-community/masked-view": "^0.1.10",
     "@react-native-firebase/app": "^10.0.0",
     "@react-native-picker/picker": "^1.9.2",
@@ -39,7 +40,8 @@
     "react-native-web": "0.14.8",
     "react-redux": "^7.2.2",
     "redux": "^4.0.5",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "rn-fetch-blob": "^0.12.0"
   },
   "devDependencies": {
     "@babel/core": "7.12.9",

@@ -1,6 +1,6 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
-import Card from "../components/Card";
+import { Text, View } from "react-native";
+import Card from "./Card";
 
 const ClientItem = (props) => {
   return (

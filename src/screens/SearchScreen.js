@@ -5,7 +5,7 @@ import Name from "../components/Name";
 import ClientItem from "../components/ClientItem";
 
 const SearchScreen = () => {
-  const clientData = useSelector((state) => state.clientData.clientList);
+  const clientData = useSelector((state) => state.clientList.clientList);
 
   return (
     <View style={styles.full}>
@@ -25,7 +25,7 @@ const SearchScreen = () => {
 
 const styles = StyleSheet.create({
   full: {
-    backgroundColor: "pink",
+    backgroundColor: "black",
     height: "100%",
     alignItems: "center",
   },
@@ -38,11 +38,11 @@ const styles = StyleSheet.create({
   full2: {
     height: "100%",
     width: "90%",
-    backgroundColor: "pink",
   },
   text: {
     textAlign: "center",
     fontSize: 24,
+    color: "pink",
   },
 });
 
