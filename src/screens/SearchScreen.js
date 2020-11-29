@@ -36,6 +36,9 @@ const SearchScreen = () => {
 
   return (
     <View style={styles.full}>
+      <View style={styles.section}>
+        <Name />
+      </View>
       <View style={styles.full2}>
         <FlatList
           data={clientData}
