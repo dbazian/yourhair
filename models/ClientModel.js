@@ -1,5 +1,6 @@
 class ClientModel {
-  constructor(firstName, lastName, address, city, phoneNumber, email) {
+  constructor(key, firstName, lastName, address, city, phoneNumber, email) {
+    this.key = key;
     this.firstName = firstName;
     this.lastName = lastName;
     this.address = address;

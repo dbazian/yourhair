@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { View, Text, StyleSheet, TextInput, Button } from "react-native";
 import { useDispatch } from "react-redux";
 import { addClient } from "../../store/actions/clientListActions";

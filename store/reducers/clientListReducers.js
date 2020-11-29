@@ -7,11 +7,14 @@ const initialState = {
 const clientListReducers = (state = initialState, action) => {
   switch (action.type) {
     case GET_CLIENTS:
-      return;
+      console.log("client reducer");
+      console.log(action.clients);
+      return {
+        clientList: action.clients,
+      };
     case DELETE_CLIENT:
       return;
     case ADD_CLIENT:
-      console.log(action);
       return;
     case UPDATE_CLIENT:
       return;

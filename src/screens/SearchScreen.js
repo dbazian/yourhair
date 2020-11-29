@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { View, StyleSheet, FlatList } from "react-native";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import Name from "../components/Name";
 import ClientItem from "../components/ClientItem";
+import { getClients } from "../../store/actions/clientListActions";
 
 const SearchScreen = () => {
   const clientData = useSelector((state) => state.clientList.clientList);
-
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getClients());
+  }, []);
   return (
     <View style={styles.full}>
       <View style={styles.section}>
