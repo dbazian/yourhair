@@ -5,12 +5,16 @@ import { addClient } from "../../store/actions/clientListActions";
 import { useForm, Controller } from "react-hook-form";
 
 const AddScreen = () => {
-  const { control, handleSubmit, errors } = useForm();
-  const onSubmit = (data) => dispatch(addClient(data));
+  const { control, handleSubmit, errors, reset } = useForm({ mode: "onChange" });
   const dispatch = useDispatch();
+  const onSubmit = (data) => {
+    dispatch(addClient(data));
+    reset();
+  };
 
   return (
     <View style={styles.full}>
+      <Text style={styles.title}>Add Client</Text>
       <Controller
         control={control}
         render={({ onChange, onBlur, value }) => (
@@ -20,13 +24,14 @@ const AddScreen = () => {
             onChangeText={(value) => onChange(value)}
             style={styles.textInput}
             placeholder={"First Name"}
+            placeholderTextColor="#757575"
           />
         )}
         name="firstName"
         rules={{ required: true, minLength: 2, maxLength: 20 }}
         defaultValue=""
       />
-      {errors.firstName && <Text style={styles.errorText}>This is required.</Text>}
+      {errors.firstName && <Text style={styles.errorText}>First Name Is Required.</Text>}
 
       <Controller
         control={control}
@@ -37,13 +42,14 @@ const AddScreen = () => {
             onChangeText={(value) => onChange(value)}
             style={styles.textInput}
             placeholder={"Last Name"}
+            placeholderTextColor="#757575"
           />
         )}
         name="lastName"
         rules={{ required: true, minLength: 2, maxLength: 20 }}
         defaultValue=""
       />
-      {errors.lastName && <Text style={styles.errorText}>This is required.</Text>}
+      {errors.lastName && <Text style={styles.errorText}>Last Name Is Required</Text>}
       <Controller
         control={control}
         render={({ onChange, onBlur, value }) => (
@@ -53,10 +59,11 @@ const AddScreen = () => {
             onChangeText={(value) => onChange(value)}
             style={styles.textInput}
             placeholder={"Address"}
+            placeholderTextColor="#757575"
           />
         )}
         name="address"
-        rules={{ required: false, maxLength: 20 }}
+        rules={{ required: false }}
         defaultValue=""
       />
       {errors.address && <Text style={styles.errorText}></Text>}
@@ -69,10 +76,11 @@ const AddScreen = () => {
             onChangeText={(value) => onChange(value)}
             style={styles.textInput}
             placeholder={"City"}
+            placeholderTextColor="#757575"
           />
         )}
         name="city"
-        rules={{ required: false, maxLength: 20 }}
+        rules={{ required: false }}
         defaultValue=""
       />
       {errors.city && <Text style={styles.errorText}></Text>}
@@ -84,14 +92,15 @@ const AddScreen = () => {
             onBlur={onBlur}
             onChangeText={(value) => onChange(value)}
             style={styles.textInput}
-            placeholder={"phoneNumber"}
+            placeholder={"Phone Number"}
+            placeholderTextColor="#757575"
           />
         )}
         name="phoneNumber"
         rules={{ required: true, minLength: 10, maxLength: 10 }}
         defaultValue=""
       />
-      {errors.phoneNumber && <Text style={styles.errorText}>This is required.</Text>}
+      {errors.phoneNumber && <Text style={styles.errorText}>Not A Valid Phone Number.</Text>}
       <Controller
         control={control}
         render={({ onChange, onBlur, value }) => (
@@ -101,6 +110,7 @@ const AddScreen = () => {
             onChangeText={(value) => onChange(value)}
             style={styles.textInput}
             placeholder={"Email"}
+            placeholderTextColor="#757575"
           />
         )}
         name="email"
@@ -108,7 +118,7 @@ const AddScreen = () => {
         defaultValue=""
       />
       {errors.email && <Text style={styles.errorText}>This is required.</Text>}
-      <Button style={styles.button} onPress={handleSubmit(onSubmit)} title="Add Client"></Button>
+      <Button style={styles.button} color="white" onPress={handleSubmit(onSubmit)} title="Submit"></Button>
     </View>
   );
 };
@@ -117,26 +127,28 @@ const styles = StyleSheet.create({
   full: {
     paddingVertical: 100,
     height: "100%",
-    backgroundColor: "pink",
+    backgroundColor: "black",
     alignItems: "center",
   },
   text: {
     textAlign: "center",
     fontSize: 24,
-    color: "white",
-  },
-  button: {
-    color: "white",
-    backgroundColor: "white",
+    color: "black",
   },
   textInput: {
-    backgroundColor: "white",
+    backgroundColor: "pink",
     height: "8%",
     width: "90%",
-    marginVertical: 5,
+    marginVertical: 10,
+    borderRadius: 10,
   },
   errorText: {
     color: "red",
+  },
+  title: {
+    color: "white",
+    fontSize: 25,
+    marginBottom: 10,
   },
 });
 

@@ -1,5 +1,3 @@
-import Axios from "axios";
-
 import axios from "axios";
 
 export const GET_CLIENTS = "GET_CLIENTS";
@@ -24,6 +22,9 @@ export const addClient = (clientList) => {
     await axios
       .post("https://yourhaircalled.firebaseio.com/clients/.json", {
         clientList,
+      })
+      .then((response) => {
+        alert("Client Has Been Added");
       })
       .catch((error) => {
         console.log(error);

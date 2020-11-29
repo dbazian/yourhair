@@ -11,6 +11,7 @@ const clientListReducers = (state = initialState, action) => {
     case DELETE_CLIENT:
       return;
     case ADD_CLIENT:
+      console.log(action);
       return;
     case UPDATE_CLIENT:
       return;
