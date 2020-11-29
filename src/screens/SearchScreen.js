@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import Name from "../components/Name";
 import ClientItem from "../components/ClientItem";
 import { getClients } from "../../store/actions/clientListActions";
+import Colors from "../../constants/Colors";
 
 const SearchScreen = () => {
   const clientData = useSelector((state) => state.clientList.clientList);
@@ -46,7 +47,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   section: {
-    backgroundColor: "white",
+    backgroundColor: Colors.text,
     alignItems: "center",
     marginTop: 50,
     marginBottom: 100,
@@ -58,7 +59,7 @@ const styles = StyleSheet.create({
   text: {
     textAlign: "center",
     fontSize: 24,
-    color: "pink",
+    color: Colors.text,
   },
 });
 

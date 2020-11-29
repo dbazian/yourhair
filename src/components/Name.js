@@ -2,6 +2,7 @@ import React from "react";
 import { StyleSheet, View, Text } from "react-native";
 import AutoComplete from "react-native-autocomplete-input";
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from "react-native-responsive-screen";
+import Colors from "../../constants/Colors";
 
 const Name = (props) => {
   return (
@@ -29,14 +30,16 @@ const Name = (props) => {
 const styles = StyleSheet.create({
   text: {
     fontSize: 20,
-    color: "white",
+    color: Colors.text,
   },
   formBox: {
-    backgroundColor: "pink",
+    backgroundColor: Colors.primary,
     textAlign: "center",
     fontSize: hp("2%"),
     height: hp("7%"),
     width: wp("95%"),
+    borderColor: Colors.secondary,
+    borderWidth: 2,
   },
   viewContainer: {
     zIndex: 1,

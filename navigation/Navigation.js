@@ -6,6 +6,7 @@ import SortScreen from "../src/screens/SortScreen";
 import SearchScreen from "../src/screens/SearchScreen";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faSearch, faSortAlt, faUserPlus } from "@fortawesome/pro-duotone-svg-icons";
+import Colors from "../constants/Colors";
 
 const Tab = createBottomTabNavigator();
 
@@ -27,8 +28,8 @@ const Navigation = () => {
           },
         })}
         tabBarOptions={{
-          activeTintColor: "pink",
-          inactiveTintColor: "gray",
+          activeTintColor: Colors.primary,
+          inactiveTintColor: "black",
         }}>
         <Tab.Screen name="Add" component={AddScreen} />
         <Tab.Screen name="Search" component={SearchScreen} />

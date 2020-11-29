@@ -20,12 +20,14 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginTop: 15,
     shadowColor: Colors.secondary,
-    shadowOffset: { width: 4, height: 5 },
+    shadowOffset: { width: 3, height: 3 },
     shadowOpacity: 0.9,
+    borderWidth: 2,
+    borderColor: Colors.secondary,
   },
   text: {
     fontSize: 20,
-    color: "white",
+    color: Colors.text,
   },
 });
 

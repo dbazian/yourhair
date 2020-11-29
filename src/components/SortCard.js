@@ -1,13 +1,14 @@
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
+import Colors from "../../constants/Colors";
 
 const SortCard = (props) => {
   return (
     <View style={styles.aroundCards}>
       <TouchableOpacity style={[styles.outerCard, props.style]}>
         <Text style={styles.text}>{props.title}</Text>
-        <FontAwesomeIcon icon={props.iconName} color="white" />
+        <FontAwesomeIcon icon={props.iconName} color="black" />
       </TouchableOpacity>
     </View>
   );
@@ -20,12 +21,12 @@ const styles = StyleSheet.create({
   outerCard: {
     height: 150,
     width: 150,
-    backgroundColor: "#59a19f",
+    backgroundColor: Colors.primary,
     borderRadius: 20,
     justifyContent: "center",
     alignItems: "center",
     shadowRadius: 2,
-    shadowColor: "white",
+    shadowColor: Colors.secondary,
     shadowOffset: {
       width: 1,
       height: 2,

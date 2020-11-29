@@ -2,6 +2,7 @@ import React from "react";
 import { View, StyleSheet } from "react-native";
 import SortCard from "../components/SortCard";
 import { faArrowAltUp, faArrowAltDown } from "@fortawesome/pro-duotone-svg-icons";
+import Colors from "../../constants/Colors";
 
 const SortScreen = () => {
   return (
@@ -28,7 +29,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#a7f6d8",
   },
   color2: {
-    backgroundColor: "#ab8a81",
+    backgroundColor: Colors.secondary,
   },
   color3: {
     backgroundColor: "#f9cbcb",

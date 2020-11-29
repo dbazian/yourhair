@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { addClient } from "../../store/actions/clientListActions";
 import { useForm, Controller } from "react-hook-form";
 import Button from "../components/Button";
+import Colors from "../../constants/Colors";
 
 const AddScreen = () => {
   const { control, handleSubmit, errors, reset } = useForm({ mode: "onChange" });
@@ -25,7 +26,7 @@ const AddScreen = () => {
             onChangeText={(value) => onChange(value)}
             style={styles.textInput}
             placeholder={"First Name"}
-            placeholderTextColor="#757575"
+            placeholderTextColor={Colors.text}
           />
         )}
         name="firstName"
@@ -43,7 +44,7 @@ const AddScreen = () => {
             onChangeText={(value) => onChange(value)}
             style={styles.textInput}
             placeholder={"Last Name"}
-            placeholderTextColor="#757575"
+            placeholderTextColor={Colors.text}
           />
         )}
         name="lastName"
@@ -60,7 +61,7 @@ const AddScreen = () => {
             onChangeText={(value) => onChange(value)}
             style={styles.textInput}
             placeholder={"Address"}
-            placeholderTextColor="#757575"
+            placeholderTextColor={Colors.text}
           />
         )}
         name="address"
@@ -77,7 +78,7 @@ const AddScreen = () => {
             onChangeText={(value) => onChange(value)}
             style={styles.textInput}
             placeholder={"City"}
-            placeholderTextColor="#757575"
+            placeholderTextColor={Colors.text}
           />
         )}
         name="city"
@@ -94,7 +95,7 @@ const AddScreen = () => {
             onChangeText={(value) => onChange(value)}
             style={styles.textInput}
             placeholder={"Phone Number"}
-            placeholderTextColor="#757575"
+            placeholderTextColor={Colors.text}
           />
         )}
         name="phoneNumber"
@@ -111,7 +112,7 @@ const AddScreen = () => {
             onChangeText={(value) => onChange(value)}
             style={styles.textInput}
             placeholder={"Email"}
-            placeholderTextColor="#757575"
+            placeholderTextColor={Colors.text}
           />
         )}
         name="email"
@@ -134,20 +135,24 @@ const styles = StyleSheet.create({
   text: {
     textAlign: "center",
     fontSize: 24,
-    color: "black",
+    color: Colors.text,
   },
   textInput: {
-    backgroundColor: "pink",
-    height: "8%",
+    backgroundColor: Colors.primary,
+    color: Colors.secondary,
+    height: "9%",
     width: "90%",
     marginVertical: 10,
     borderRadius: 10,
+    borderColor: Colors.secondary,
+    borderWidth: 2,
+    padding: 5,
   },
   errorText: {
     color: "red",
   },
   title: {
-    color: "white",
+    color: Colors.text,
     fontSize: 25,
     marginBottom: 10,
   },
