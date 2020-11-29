@@ -28,11 +28,11 @@ const Name = (props) => {
 
 const styles = StyleSheet.create({
   text: {
-    color: "pink",
     fontSize: 20,
+    color: "white",
   },
   formBox: {
-    backgroundColor: "white",
+    backgroundColor: "pink",
     textAlign: "center",
     fontSize: hp("2%"),
     height: hp("7%"),

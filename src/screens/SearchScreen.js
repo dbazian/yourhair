@@ -7,10 +7,20 @@ import { getClients } from "../../store/actions/clientListActions";
 
 const SearchScreen = () => {
   const clientData = useSelector((state) => state.clientList.clientList);
+  const [isLoading, setIsLoading] = useState(false);
+
   const dispatch = useDispatch();
+
   useEffect(() => {
-    dispatch(getClients());
+    fetchClients();
   }, []);
+
+  const fetchClients = () => {
+    setIsLoading(true);
+    dispatch(getClients());
+    setIsLoading(false);
+  };
+
   return (
     <View style={styles.full}>
       <View style={styles.section}>
@@ -19,7 +29,9 @@ const SearchScreen = () => {
       <View style={styles.full2}>
         <FlatList
           data={clientData}
-          keyExtractor={(item) => item.index}
+          refreshing={isLoading}
+          onRefresh={fetchClients}
+          keyExtractor={(item) => item.key}
           renderItem={(itemData) => <ClientItem items={itemData.item} />}
         />
       </View>
@@ -40,7 +52,7 @@ const styles = StyleSheet.create({
     marginBottom: 100,
   },
   full2: {
-    height: "100%",
+    height: "75%",
     width: "90%",
   },
   text: {

@@ -1,8 +1,9 @@
 import React from "react";
-import { View, Text, StyleSheet, TextInput, Button } from "react-native";
+import { View, Text, StyleSheet, TextInput } from "react-native";
 import { useDispatch } from "react-redux";
 import { addClient } from "../../store/actions/clientListActions";
 import { useForm, Controller } from "react-hook-form";
+import Button from "../components/Button";
 
 const AddScreen = () => {
   const { control, handleSubmit, errors, reset } = useForm({ mode: "onChange" });
@@ -118,7 +119,7 @@ const AddScreen = () => {
         defaultValue=""
       />
       {errors.email && <Text style={styles.errorText}>This is required.</Text>}
-      <Button style={styles.button} color="white" onPress={handleSubmit(onSubmit)} title="Submit"></Button>
+      <Button text={"Submit"} style={styles.button} onPress={handleSubmit(onSubmit)} title="Submit"></Button>
     </View>
   );
 };
