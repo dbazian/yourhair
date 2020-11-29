@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, StyleSheet, FlatList } from "react-native";
+import { View, StyleSheet, FlatList, ActivityIndicator, Text } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 import Name from "../components/Name";
 import ClientItem from "../components/ClientItem";
@@ -22,11 +22,20 @@ const SearchScreen = () => {
     setIsLoading(false);
   };
 
+  if (isLoading) {
+    return <ActivityIndicator />;
+  }
+
+  if (clientData.length === 0) {
+    return (
+      <View style={styles.fullEmpty}>
+        <Text style={styles.text}>You haven't added any clients.</Text>
+      </View>
+    );
+  }
+
   return (
     <View style={styles.full}>
-      <View style={styles.section}>
-        <Name />
-      </View>
       <View style={styles.full2}>
         <FlatList
           data={clientData}
@@ -45,6 +54,12 @@ const styles = StyleSheet.create({
     backgroundColor: "black",
     height: "100%",
     alignItems: "center",
+  },
+  fullEmpty: {
+    backgroundColor: "black",
+    justifyContent: "center",
+    alignItems: "center",
+    height: "100%",
   },
   section: {
     backgroundColor: Colors.text,

@@ -1,14 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { View, Text, StyleSheet, TextInput } from "react-native";
 import { useDispatch } from "react-redux";
-import { addClient } from "../../store/actions/clientListActions";
+import { addClient, getClients } from "../../store/actions/clientListActions";
 import { useForm, Controller } from "react-hook-form";
 import Button from "../components/Button";
 import Colors from "../../constants/Colors";
 
-const AddScreen = () => {
+const AddScreen = ({ navigation }) => {
   const { control, handleSubmit, errors, reset } = useForm({ mode: "onChange" });
+
+  useEffect(() => {
+    navigation.addListener("blur", () => {
+      dispatch(getClients());
+    });
+  }, [navigation]);
+
   const dispatch = useDispatch();
+
   const onSubmit = (data) => {
     dispatch(addClient(data));
     reset();
