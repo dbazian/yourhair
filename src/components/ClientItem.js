@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
+import { useDispatch } from "react-redux";
 import Card from "./Card";
 import Colors from "../../constants/Colors";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faArrowDown, faArrowUp, faUserMinus } from "@fortawesome/pro-duotone-svg-icons";
+import { removeClient } from "../../store/actions/clientListActions";
 
 const ClientItem = (props) => {
   const [showDetails, setShowDetails] = useState("false");
+  const dispatch = useDispatch();
+
   return (
     <Card>
       <View>
@@ -21,7 +25,12 @@ const ClientItem = (props) => {
             size={40}
             onPress={() => setShowDetails(!showDetails)}
           />
-          <FontAwesomeIcon icon={faUserMinus} color={Colors.secondary} size={40} />
+          <FontAwesomeIcon
+            icon={faUserMinus}
+            color={Colors.secondary}
+            size={40}
+            onPress={() => dispatch(removeClient(props.items.key))}
+          />
         </View>
         {!showDetails && (
           <View style={styles.bottomCard}>

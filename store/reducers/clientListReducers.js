@@ -7,8 +7,6 @@ const initialState = {
 const clientListReducers = (state = initialState, action) => {
   switch (action.type) {
     case GET_CLIENTS:
-      console.log("client reducer");
-      console.log(action.clients);
       return {
         clientList: action.clients,
       };

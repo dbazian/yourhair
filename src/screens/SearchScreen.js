@@ -5,6 +5,7 @@ import Name from "../components/Name";
 import ClientItem from "../components/ClientItem";
 import { getClients } from "../../store/actions/clientListActions";
 import Colors from "../../constants/Colors";
+import { PulseIndicator } from "react-native-indicators";
 
 const SearchScreen = () => {
   const clientData = useSelector((state) => state.clientList.clientList);
@@ -23,16 +24,20 @@ const SearchScreen = () => {
   };
 
   if (isLoading) {
-    return <ActivityIndicator />;
+    return (
+      <View style={styles.fullEmpty}>
+        <PulseIndicator color={"white"} size={20} />
+      </View>
+    );
   }
 
-  if (clientData.length === 0) {
+  /* if (clientData.length === 0) {
     return (
       <View style={styles.fullEmpty}>
         <Text style={styles.text}>You haven't added any clients.</Text>
       </View>
     );
-  }
+  } */
 
   return (
     <View style={styles.full}>

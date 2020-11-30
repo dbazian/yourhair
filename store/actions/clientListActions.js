@@ -1,10 +1,11 @@
 import axios from "axios";
 import ClientModel from "../../models/ClientModel";
+
 export const GET_CLIENTS = "GET_CLIENTS";
 export const REMOVE_CLIENT = "REMOVE_CLIENT";
 export const ADD_CLIENT = "ADD_CLIENT";
 export const UPDATE_CLIENT = "UPDATE_CLIENT";
-//(firstName, lastName, address, city, phoneNumber, email)
+
 export const getClients = () => {
   return async (dispatch, getState) => {
     await axios
@@ -12,8 +13,6 @@ export const getClients = () => {
       .then((response) => {
         const resData = response.data;
         const loadedClients = [];
-        console.log("get request");
-        console.log(resData);
         for (const key in resData) {
           loadedClients.push(
             new ClientModel(
@@ -42,9 +41,18 @@ export const getClients = () => {
   };
 };
 
-export const removeClient = () => {
-  return {
-    type: REMOVE_CLIENT,
+export const removeClient = (client) => {
+  return async (dispatch, getState) => {
+    await axios
+      .delete(`https://yourhaircalled.firebaseio.com/clients/${client}.json`)
+      .then((response) => {
+        alert("Client has been deleted");
+      })
+
+      .catch((error) => {
+        alert("There was an error");
+        console.log(error);
+      });
   };
 };
 
@@ -54,9 +62,7 @@ export const addClient = (clientList) => {
       .post("https://yourhaircalled.firebaseio.com/clients/.json", {
         clientList,
       })
-      .then((response) => {
-        alert("Client Has Been Added");
-      })
+      .then((response) => {})
       .catch((error) => {
         console.log(error);
       });

@@ -30,20 +30,11 @@ const AddScreen = ({ navigation }) => {
 
   const onSubmit = (data) => {
     setIsLoading(true);
-    for (const key in clientData) {
-      if (clientData[key].lastName === data.lastName) {
-        Alert.alert("The entered Last Name matches one on record would you like to continue?");
-        return;
-      } else if (clientData[key].phoneNumber === data.phoneNumber) {
-        Alert.alert("The phone number entered matches one on record would you like to continue?");
-      } else {
-        dispatch(addClient(data));
-        reset();
-        setTimeout(() => {
-          setIsLoading(false);
-        }, 3000);
-      }
-    }
+    dispatch(addClient(data));
+    reset();
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 3000);
   };
 
   return (
