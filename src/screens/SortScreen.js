@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.secondary,
   },
   color3: {
-    backgroundColor: "#f9cbcb",
+    backgroundColor: Colors.alt,
   },
 });
 

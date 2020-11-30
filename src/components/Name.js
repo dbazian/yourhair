@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
   viewContainer: {
     zIndex: 1,
     flex: 1,
-    width: "95%",
+    width: "100%",
     position: "absolute",
     alignItems: "center",
   },

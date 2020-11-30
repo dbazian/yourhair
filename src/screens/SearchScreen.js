@@ -65,14 +65,18 @@ const styles = StyleSheet.create({
     height: "100%",
   },
   section: {
-    backgroundColor: Colors.text,
     alignItems: "center",
-    marginTop: 50,
+    marginTop: 30,
     marginBottom: 100,
+    width: "100%",
   },
   full2: {
-    height: "75%",
-    width: "90%",
+    height: "80%",
+    width: "100%",
+    borderWidth: 2,
+    borderColor: Colors.secondary,
+    borderRadius: 10,
+    backgroundColor: Colors.alt2,
   },
   text: {
     textAlign: "center",

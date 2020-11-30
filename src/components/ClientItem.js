@@ -3,29 +3,25 @@ import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
 import Card from "./Card";
 import Colors from "../../constants/Colors";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
-import { faArrowDown, faUserMinus } from "@fortawesome/pro-duotone-svg-icons";
+import { faArrowDown, faArrowUp, faUserMinus } from "@fortawesome/pro-duotone-svg-icons";
 
 const ClientItem = (props) => {
   const [showDetails, setShowDetails] = useState("false");
   return (
     <Card>
-      <View style={styles.fullCard}>
+      <View>
         <View style={styles.topCard}>
           <View style={styles.fullName}>
             <Text style={styles.textTop}>{props.items.firstName}-</Text>
             <Text style={styles.textTop}>{props.items.lastName}</Text>
           </View>
-          <TouchableOpacity style={styles.icons}>
-            <FontAwesomeIcon
-              icon={faArrowDown}
-              color={Colors.secondary}
-              size={40}
-              onPress={() => setShowDetails(!showDetails)}
-            />
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.icons}>
-            <FontAwesomeIcon icon={faUserMinus} color={Colors.secondary} size={40} />
-          </TouchableOpacity>
+          <FontAwesomeIcon
+            icon={showDetails ? faArrowDown : faArrowUp}
+            color={Colors.secondary}
+            size={40}
+            onPress={() => setShowDetails(!showDetails)}
+          />
+          <FontAwesomeIcon icon={faUserMinus} color={Colors.secondary} size={40} />
         </View>
         {!showDetails && (
           <View style={styles.bottomCard}>
@@ -43,6 +39,7 @@ const ClientItem = (props) => {
 const styles = StyleSheet.create({
   fullName: {
     flexDirection: "row",
+    width: "50%",
   },
   topCard: {
     flexDirection: "row",

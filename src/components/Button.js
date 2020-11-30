@@ -1,12 +1,16 @@
 import React from "react";
-import { Text, TouchableOpacity, StyleSheet } from "react-native";
+import { Text, TouchableOpacity, StyleSheet, View } from "react-native";
+import { PulseIndicator } from "react-native-indicators";
 import Colors from "../../constants/Colors";
 
 const Button = (props) => {
   return (
-    <TouchableOpacity style={styles.button} onPress={props.onPress}>
-      <Text style={styles.text}>{props.text}</Text>
-    </TouchableOpacity>
+    <View>
+      <TouchableOpacity onPress={props.onPress} style={styles.button}>
+        <Text style={styles.text}>{props.text}</Text>
+        {props.animating && <PulseIndicator style={styles.indicator} animating={props.animating} color="white" />}
+      </TouchableOpacity>
+    </View>
   );
 };
 
@@ -20,10 +24,13 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginTop: 15,
     shadowColor: Colors.secondary,
-    shadowOffset: { width: 3, height: 3 },
-    shadowOpacity: 0.9,
+    shadowOffset: { width: 1, height: 1 },
+    shadowOpacity: 0.99,
     borderWidth: 2,
     borderColor: Colors.secondary,
+  },
+  indicator: {
+    position: "absolute",
   },
   text: {
     fontSize: 20,

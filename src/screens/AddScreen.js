@@ -1,13 +1,16 @@
-import React, { useEffect } from "react";
-import { View, Text, StyleSheet, TextInput } from "react-native";
-import { useDispatch } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { View, Text, StyleSheet, TextInput, Alert } from "react-native";
+import { useDispatch, useSelector } from "react-redux";
 import { addClient, getClients } from "../../store/actions/clientListActions";
 import { useForm, Controller } from "react-hook-form";
 import Button from "../components/Button";
 import Colors from "../../constants/Colors";
 
 const AddScreen = ({ navigation }) => {
+  const clientData = useSelector((state) => state.clientList.clientList);
   const { control, handleSubmit, errors, reset } = useForm({ mode: "onChange" });
+  const [isLoading, setIsLoading] = useState(false);
+  const [buttonText, setButtonText] = useState("Submit");
 
   useEffect(() => {
     navigation.addListener("blur", () => {
@@ -15,11 +18,32 @@ const AddScreen = ({ navigation }) => {
     });
   }, [navigation]);
 
+  useEffect(() => {
+    if (isLoading) {
+      setButtonText("");
+    } else {
+      setButtonText("Submit");
+    }
+  }, [isLoading]);
+
   const dispatch = useDispatch();
 
   const onSubmit = (data) => {
-    dispatch(addClient(data));
-    reset();
+    setIsLoading(true);
+    for (const key in clientData) {
+      if (clientData[key].lastName === data.lastName) {
+        Alert.alert("The entered Last Name matches one on record would you like to continue?");
+        return;
+      } else if (clientData[key].phoneNumber === data.phoneNumber) {
+        Alert.alert("The phone number entered matches one on record would you like to continue?");
+      } else {
+        dispatch(addClient(data));
+        reset();
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 3000);
+      }
+    }
   };
 
   return (
@@ -128,17 +152,19 @@ const AddScreen = ({ navigation }) => {
         defaultValue=""
       />
       {errors.email && <Text style={styles.errorText}>This is required.</Text>}
-      <Button text={"Submit"} style={styles.button} onPress={handleSubmit(onSubmit)} title="Submit"></Button>
+      <View>
+        <Button animating={isLoading} text={buttonText} onPress={handleSubmit(onSubmit)}></Button>
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   full: {
-    paddingVertical: 100,
     height: "100%",
     backgroundColor: "black",
     alignItems: "center",
+    paddingTop: 10,
   },
   text: {
     textAlign: "center",
