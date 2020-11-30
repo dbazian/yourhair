@@ -14,30 +14,35 @@ const SearchScreen = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    fetchClients();
+    const loadClients = async () => {
+      setIsLoading(true);
+      await dispatch(getClients());
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 1000);
+    };
+    loadClients();
   }, []);
 
   const fetchClients = () => {
-    setIsLoading(true);
     dispatch(getClients());
-    setIsLoading(false);
   };
 
   if (isLoading) {
     return (
       <View style={styles.fullEmpty}>
-        <PulseIndicator color={"white"} size={20} />
+        <PulseIndicator color={"white"} size={75} />
       </View>
     );
   }
 
-  /* if (clientData.length === 0) {
+  if (clientData.length === 0) {
     return (
       <View style={styles.fullEmpty}>
         <Text style={styles.text}>You haven't added any clients.</Text>
       </View>
     );
-  } */
+  }
 
   return (
     <View style={styles.full}>
