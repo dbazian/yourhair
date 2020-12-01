@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { View, StyleSheet, FlatList, Text, Button } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
-import Name from "../components/Name";
 import ClientItem from "../components/ClientItem";
 import { getClients } from "../../store/actions/clientListActions";
 import Colors from "../../constants/Colors";
 import { PulseIndicator } from "react-native-indicators";
 
-const SearchScreen = () => {
-  const clientData = useSelector(state => state.clientSort.clientList);
+const SortedScreen = () => {
+  const clientData = useSelector(state => state.clientSort.filteredList);
   const [isLoading, setIsLoading] = useState(false);
 
   const dispatch = useDispatch();
@@ -36,20 +35,8 @@ const SearchScreen = () => {
     );
   }
 
-  if (clientData.length === 0) {
-    return (
-      <View style={styles.fullEmpty}>
-        <Text style={styles.text}>You haven't added any clients.</Text>
-        <Button title="Refresh" onPress={() => dispatch(getClients())}></Button>
-      </View>
-    );
-  }
-
   return (
     <View style={styles.full}>
-      <View style={styles.section}>
-        <Name />
-      </View>
       <View style={styles.full2}>
         <FlatList
           data={clientData}
@@ -96,4 +83,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SearchScreen;
+export default SortedScreen;

@@ -3,10 +3,12 @@ import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import Colors from "../../constants/Colors";
 
-const SortCard = (props) => {
+const SortCard = props => {
   return (
     <View style={styles.aroundCards}>
-      <TouchableOpacity style={[styles.outerCard, props.style]}>
+      <TouchableOpacity
+        style={[styles.outerCard, props.style]}
+        onPress={props.onPress}>
         <Text style={styles.text}>{props.title}</Text>
         <FontAwesomeIcon icon={props.iconName} color="black" />
       </TouchableOpacity>

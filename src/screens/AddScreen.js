@@ -7,8 +7,10 @@ import Button from "../components/Button";
 import Colors from "../../constants/Colors";
 
 const AddScreen = ({ navigation }) => {
-  const clientData = useSelector((state) => state.clientList.clientList);
-  const { control, handleSubmit, errors, reset } = useForm({ mode: "onChange" });
+  const clientData = useSelector(state => state.clientList.clientList);
+  const { control, handleSubmit, errors, reset } = useForm({
+    mode: "onChange",
+  });
   const [isLoading, setIsLoading] = useState(false);
   const [buttonText, setButtonText] = useState("Submit");
 
@@ -28,7 +30,7 @@ const AddScreen = ({ navigation }) => {
 
   const dispatch = useDispatch();
 
-  const onSubmit = (data) => {
+  const onSubmit = data => {
     setIsLoading(true);
     dispatch(addClient(data));
     reset();
@@ -37,16 +39,21 @@ const AddScreen = ({ navigation }) => {
     }, 3000);
   };
 
+  const handleButtonSubmit = data => {
+    console.log("data");
+    console.log(data);
+  };
+
   return (
     <View style={styles.full}>
       <Text style={styles.title}>Add Client</Text>
       <Controller
         control={control}
-        render={({ onChange, onBlur, value }) => (
+        render={({ onChange, onBlur, valueFirstName }) => (
           <TextInput
-            value={value}
+            value={valueFirstName}
             onBlur={onBlur}
-            onChangeText={(value) => onChange(value)}
+            onChangeText={valueFirstName => onChange(valueFirstName)}
             style={styles.textInput}
             placeholder={"First Name"}
             placeholderTextColor={Colors.text}
@@ -56,7 +63,9 @@ const AddScreen = ({ navigation }) => {
         rules={{ required: true, minLength: 2, maxLength: 20 }}
         defaultValue=""
       />
-      {errors.firstName && <Text style={styles.errorText}>First Name Is Required.</Text>}
+      {errors.firstName && (
+        <Text style={styles.errorText}>First Name Is Not Valid.</Text>
+      )}
 
       <Controller
         control={control}
@@ -64,7 +73,7 @@ const AddScreen = ({ navigation }) => {
           <TextInput
             value={value}
             onBlur={onBlur}
-            onChangeText={(value) => onChange(value)}
+            onChangeText={value => onChange(value)}
             style={styles.textInput}
             placeholder={"Last Name"}
             placeholderTextColor={Colors.text}
@@ -74,14 +83,16 @@ const AddScreen = ({ navigation }) => {
         rules={{ required: true, minLength: 2, maxLength: 20 }}
         defaultValue=""
       />
-      {errors.lastName && <Text style={styles.errorText}>Last Name Is Required</Text>}
+      {errors.lastName && (
+        <Text style={styles.errorText}>Last Name Is Not Valid.</Text>
+      )}
       <Controller
         control={control}
         render={({ onChange, onBlur, value }) => (
           <TextInput
             value={value}
             onBlur={onBlur}
-            onChangeText={(value) => onChange(value)}
+            onChangeText={value => onChange(value)}
             style={styles.textInput}
             placeholder={"Address"}
             placeholderTextColor={Colors.text}
@@ -98,7 +109,7 @@ const AddScreen = ({ navigation }) => {
           <TextInput
             value={value}
             onBlur={onBlur}
-            onChangeText={(value) => onChange(value)}
+            onChangeText={value => onChange(value)}
             style={styles.textInput}
             placeholder={"City"}
             placeholderTextColor={Colors.text}
@@ -115,7 +126,7 @@ const AddScreen = ({ navigation }) => {
           <TextInput
             value={value}
             onBlur={onBlur}
-            onChangeText={(value) => onChange(value)}
+            onChangeText={value => onChange(value)}
             style={styles.textInput}
             placeholder={"Phone Number"}
             placeholderTextColor={Colors.text}
@@ -125,14 +136,16 @@ const AddScreen = ({ navigation }) => {
         rules={{ required: true, minLength: 10, maxLength: 10 }}
         defaultValue=""
       />
-      {errors.phoneNumber && <Text style={styles.errorText}>Not A Valid Phone Number.</Text>}
+      {errors.phoneNumber && (
+        <Text style={styles.errorText}>Not A Valid Phone Number.</Text>
+      )}
       <Controller
         control={control}
         render={({ onChange, onBlur, value }) => (
           <TextInput
             value={value}
             onBlur={onBlur}
-            onChangeText={(value) => onChange(value)}
+            onChangeText={value => onChange(value)}
             style={styles.textInput}
             placeholder={"Email"}
             placeholderTextColor={Colors.text}
@@ -144,7 +157,10 @@ const AddScreen = ({ navigation }) => {
       />
       {errors.email && <Text style={styles.errorText}>This is required.</Text>}
       <View>
-        <Button animating={isLoading} text={buttonText} onPress={handleSubmit(onSubmit)}></Button>
+        <Button
+          animating={isLoading}
+          text={buttonText}
+          onPress={handleSubmit(onSubmit)}></Button>
       </View>
     </View>
   );

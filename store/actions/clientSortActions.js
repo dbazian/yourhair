@@ -5,14 +5,14 @@ export const LAST_NAME_DESCENDING = "LAST_NAME_DESCENDING";
 export const CITY_ASCENDING = "CITY_ASCENDING";
 export const CITY_DESCENDING = "CITY_DESCENDING";
 
-export const lastAppointmentAscending = () => {
+export const lastNameAscending = () => {
   return {
-    type: LAST_APPOINTMENT_ASCENDING,
+    type: LAST_NAME_ASCENDING,
   };
 };
 
-export const lastAppointmentDescending = () => {
+export const lastNameDescending = () => {
   return {
-    type: LAST_APPOINTMENT_DESCENDING,
+    type: LAST_NAME_DESCENDING,
   };
 };

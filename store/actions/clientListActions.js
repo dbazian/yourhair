@@ -10,7 +10,7 @@ export const getClients = () => {
   return async (dispatch, getState) => {
     await axios
       .get("https://yourhaircalled.firebaseio.com/clients/.json")
-      .then((response) => {
+      .then(response => {
         const resData = response.data;
         const loadedClients = [];
         for (const key in resData) {
@@ -28,7 +28,7 @@ export const getClients = () => {
         }
         dispatch({ type: GET_CLIENTS, clients: loadedClients });
       })
-      .catch((error) => {
+      .catch(error => {
         if (error.response) {
           console.log(error.response.data);
         } else if (error.request) {
@@ -41,29 +41,31 @@ export const getClients = () => {
   };
 };
 
-export const removeClient = (client) => {
+export const removeClient = client => {
   return async (dispatch, getState) => {
     await axios
       .delete(`https://yourhaircalled.firebaseio.com/clients/${client}.json`)
-      .then((response) => {
+      .then(response => {
         alert("Client has been deleted");
       })
 
-      .catch((error) => {
+      .catch(error => {
         alert("There was an error");
         console.log(error);
       });
   };
 };
 
-export const addClient = (clientList) => {
+export const addClient = clientList => {
   return async (dispatch, getState) => {
     await axios
       .post("https://yourhaircalled.firebaseio.com/clients/.json", {
         clientList,
       })
-      .then((response) => {})
-      .catch((error) => {
+      .then(response => {
+        alert("Client Added!");
+      })
+      .catch(error => {
         console.log(error);
       });
   };
