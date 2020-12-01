@@ -17,30 +17,41 @@ const clientSortReducers = (state = initialState, action) => {
       return {
         clientList: action.clients,
       };
-    case LAST_NAME_ASCENDING:
-      state.filteredList = state.clientList.sort((a, b) => {
-        let la = a.lastName.toLowerCase();
-        let lb = b.lastName.toLowerCase();
-        if (la > lb) {
-          return -1;
-        }
-        if (la < lb) {
-          return 1;
-        }
-        return 0;
-      });
+
     case LAST_NAME_DESCENDING:
-      state.filteredList = state.clientList.sort((a, b) => {
-        console.log(a.lastName);
+      newFilteredList = state.clientList.sort((a, b) => {
         let la = a.lastName.toLowerCase();
         let lb = b.lastName.toLowerCase();
         if (la < lb) {
           return -1;
         }
-        if (la > lb) {
+        if (la < lb) {
           return 1;
         }
       });
+      return {
+        ...state,
+        filteredList: newFilteredList,
+      };
+
+    case LAST_NAME_ASCENDING:
+      newFilteredList = state.clientList
+        .sort((a, b) => {
+          let la = a.lastName.toLowerCase();
+          let lb = b.lastName.toLowerCase();
+          if (lb > la) {
+            return -1;
+          }
+          if (lb > la) {
+            return 1;
+          }
+          return 0;
+        })
+        .reverse();
+      return {
+        ...state,
+        filteredList: newFilteredList,
+      };
     default:
       return state;
   }

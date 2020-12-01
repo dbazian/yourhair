@@ -1,4 +1,5 @@
 import React from "react";
+import { StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
@@ -28,7 +29,10 @@ const SortStackScreen = () => {
       <SortStack.Screen
         name="Sorted Clients"
         component={SortedScreen}
-        options={{ headerStyle: { backgroundColor: Colors.alt2 } }}
+        options={{
+          headerStyle: { backgroundColor: "black" },
+          headerTintColor: "white",
+        }}
       />
     </SortStack.Navigator>
   );
@@ -55,7 +59,8 @@ const Navigation = () => {
         })}
         tabBarOptions={{
           activeTintColor: Colors.primary,
-          inactiveTintColor: "black",
+          inactiveTintColor: Colors.alt2,
+          style: styles.tabBar,
         }}>
         <Tab.Screen name="Add" component={AddScreen} />
         <Tab.Screen name="Search" component={SearchScreen} />
@@ -64,5 +69,11 @@ const Navigation = () => {
     </NavigationContainer>
   );
 };
+
+const styles = StyleSheet.create({
+  tabBar: {
+    backgroundColor: "black",
+  },
+});
 
 export default Navigation;

@@ -1,37 +1,34 @@
 import React, { useState, useEffect } from "react";
 import { View, StyleSheet, FlatList, Text, Button } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
+import { getClients } from "../../store/actions/clientListActions";
+import { PulseIndicator } from "react-native-indicators";
+import Colors from "../../constants/Colors";
 import Name from "../components/Name";
 import ClientItem from "../components/ClientItem";
-import { getClients } from "../../store/actions/clientListActions";
-import Colors from "../../constants/Colors";
-import { PulseIndicator } from "react-native-indicators";
 
-const SearchScreen = () => {
+const SearchScreen = ({ navigation }) => {
   const clientData = useSelector(state => state.clientSort.clientList);
   const [isLoading, setIsLoading] = useState(false);
-
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const loadClients = async () => {
-      setIsLoading(true);
-      await dispatch(getClients());
-      setTimeout(() => {
-        setIsLoading(false);
-      }, 1000);
+    const loadScreen = async () => {
+      await navigation.addListener("focus", () => {
+        setIsLoading(true);
+        dispatch(getClients());
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 1000);
+      });
     };
-    loadClients();
+    loadScreen();
   }, []);
-
-  const fetchClients = () => {
-    dispatch(getClients());
-  };
 
   if (isLoading) {
     return (
       <View style={styles.fullEmpty}>
-        <PulseIndicator color={Colors.primary} size={75} />
+        <PulseIndicator color={Colors.primary} size={100} />
       </View>
     );
   }
@@ -47,14 +44,14 @@ const SearchScreen = () => {
 
   return (
     <View style={styles.full}>
-      <View style={styles.section}>
+      <View style={styles.input}>
         <Name />
       </View>
-      <View style={styles.full2}>
+      <View style={styles.flatList}>
         <FlatList
           data={clientData}
           refreshing={isLoading}
-          onRefresh={fetchClients}
+          onRefresh={() => dispatch(getClients())}
           keyExtractor={item => item.key}
           renderItem={itemData => <ClientItem items={itemData.item} />}
         />
@@ -64,35 +61,28 @@ const SearchScreen = () => {
 };
 
 const styles = StyleSheet.create({
+  fullEmpty: {
+    backgroundColor: "black",
+    height: "100%",
+    justifyContent: "center",
+    alignItems: "center",
+  },
   full: {
     backgroundColor: "black",
     height: "100%",
-    alignItems: "center",
   },
-  fullEmpty: {
-    backgroundColor: "black",
-    justifyContent: "center",
-    alignItems: "center",
-    height: "100%",
-  },
-  section: {
-    alignItems: "center",
+  input: {
     marginTop: 30,
     marginBottom: 100,
     width: "100%",
   },
-  full2: {
-    height: "80%",
+  flatList: {
+    height: "79%",
     width: "100%",
-    borderWidth: 2,
-    borderColor: Colors.secondary,
+    borderWidth: 5,
+    borderColor: "white",
     borderRadius: 10,
     backgroundColor: Colors.alt2,
-  },
-  text: {
-    textAlign: "center",
-    fontSize: 24,
-    color: Colors.text,
   },
 });
 

@@ -12,17 +12,6 @@ const SortedScreen = () => {
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    const loadClients = async () => {
-      setIsLoading(true);
-      await dispatch(getClients());
-      setTimeout(() => {
-        setIsLoading(false);
-      }, 1000);
-    };
-    loadClients();
-  }, []);
-
   const fetchClients = () => {
     dispatch(getClients());
   };

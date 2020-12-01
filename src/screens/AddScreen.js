@@ -1,34 +1,22 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, StyleSheet, TextInput, Alert } from "react-native";
-import { useDispatch, useSelector } from "react-redux";
-import { addClient, getClients } from "../../store/actions/clientListActions";
+import { View, Text, StyleSheet, TextInput } from "react-native";
+import { useDispatch } from "react-redux";
 import { useForm, Controller } from "react-hook-form";
+import { addClient } from "../../store/actions/clientListActions";
 import Button from "../components/Button";
 import Colors from "../../constants/Colors";
 
-const AddScreen = ({ navigation }) => {
-  const clientData = useSelector(state => state.clientList.clientList);
+const AddScreen = () => {
   const { control, handleSubmit, errors, reset } = useForm({
     mode: "onChange",
   });
   const [isLoading, setIsLoading] = useState(false);
   const [buttonText, setButtonText] = useState("Submit");
-
-  useEffect(() => {
-    navigation.addListener("blur", () => {
-      dispatch(getClients());
-    });
-  }, [navigation]);
-
-  useEffect(() => {
-    if (isLoading) {
-      setButtonText("");
-    } else {
-      setButtonText("Submit");
-    }
-  }, [isLoading]);
-
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    isLoading ? setButtonText("") : setButtonText("Submit");
+  }, [isLoading]);
 
   const onSubmit = data => {
     setIsLoading(true);
@@ -39,21 +27,17 @@ const AddScreen = ({ navigation }) => {
     }, 3000);
   };
 
-  const handleButtonSubmit = data => {
-    console.log("data");
-    console.log(data);
-  };
-
   return (
     <View style={styles.full}>
       <Text style={styles.title}>Add Client</Text>
+
       <Controller
         control={control}
-        render={({ onChange, onBlur, valueFirstName }) => (
+        render={({ onChange, onBlur, value }) => (
           <TextInput
-            value={valueFirstName}
+            value={value}
             onBlur={onBlur}
-            onChangeText={valueFirstName => onChange(valueFirstName)}
+            onChangeText={value => onChange(value)}
             style={styles.textInput}
             placeholder={"First Name"}
             placeholderTextColor={Colors.text}
@@ -86,6 +70,7 @@ const AddScreen = ({ navigation }) => {
       {errors.lastName && (
         <Text style={styles.errorText}>Last Name Is Not Valid.</Text>
       )}
+
       <Controller
         control={control}
         render={({ onChange, onBlur, value }) => (
@@ -103,6 +88,7 @@ const AddScreen = ({ navigation }) => {
         defaultValue=""
       />
       {errors.address && <Text style={styles.errorText}></Text>}
+
       <Controller
         control={control}
         render={({ onChange, onBlur, value }) => (
@@ -120,6 +106,7 @@ const AddScreen = ({ navigation }) => {
         defaultValue=""
       />
       {errors.city && <Text style={styles.errorText}></Text>}
+
       <Controller
         control={control}
         render={({ onChange, onBlur, value }) => (
@@ -139,6 +126,7 @@ const AddScreen = ({ navigation }) => {
       {errors.phoneNumber && (
         <Text style={styles.errorText}>Not A Valid Phone Number.</Text>
       )}
+
       <Controller
         control={control}
         render={({ onChange, onBlur, value }) => (
@@ -173,11 +161,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingTop: 10,
   },
-  text: {
-    textAlign: "center",
-    fontSize: 24,
-    color: Colors.text,
-  },
   textInput: {
     backgroundColor: Colors.primary,
     color: Colors.secondary,
@@ -193,7 +176,7 @@ const styles = StyleSheet.create({
     color: "red",
   },
   title: {
-    color: Colors.text,
+    color: Colors.secondary,
     fontSize: 25,
     marginBottom: 10,
   },

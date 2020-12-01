@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
   outerCard: {
     height: 150,
     width: 150,
-    backgroundColor: Colors.primary,
+    backgroundColor: "white",
     borderRadius: 20,
     justifyContent: "center",
     alignItems: "center",

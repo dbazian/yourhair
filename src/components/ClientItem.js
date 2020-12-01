@@ -4,10 +4,14 @@ import { useDispatch } from "react-redux";
 import Card from "./Card";
 import Colors from "../../constants/Colors";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
-import { faArrowDown, faArrowUp, faUserMinus } from "@fortawesome/pro-duotone-svg-icons";
+import {
+  faArrowDown,
+  faArrowUp,
+  faUserMinus,
+} from "@fortawesome/pro-duotone-svg-icons";
 import { removeClient } from "../../store/actions/clientListActions";
 
-const ClientItem = (props) => {
+const ClientItem = props => {
   const [showDetails, setShowDetails] = useState("false");
   const dispatch = useDispatch();
 
@@ -34,10 +38,14 @@ const ClientItem = (props) => {
         </View>
         {!showDetails && (
           <View style={styles.bottomCard}>
-            <Text style={styles.text}>Phone Number: {props.items.phoneNumber}</Text>
+            <Text style={styles.text}>
+              Phone Number: {props.items.phoneNumber}
+            </Text>
             <Text style={styles.text}>Address: {props.items.address}</Text>
             <Text style={styles.text}>City: {props.items.city}</Text>
-            <Text style={styles.text}>Email Address: {props.items.emailAdress}</Text>
+            <Text style={styles.text}>
+              Email Address: {props.items.emailAdress}
+            </Text>
           </View>
         )}
       </View>

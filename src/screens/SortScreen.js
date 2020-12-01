@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { View, StyleSheet } from "react-native";
 import { useDispatch } from "react-redux";
 import SortCard from "../components/SortCard";
+import { getClients } from "../../store/actions/clientListActions";
 import {
   faArrowAltUp,
   faArrowAltDown,
@@ -15,6 +16,12 @@ import {
 const SortScreen = ({ navigation }) => {
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    navigation.addListener("focus", () => {
+      dispatch(getClients());
+    });
+  }, [navigation]);
+
   const handleLastNameDescending = () => {
     dispatch(lastNameDescending());
     navigation.navigate("Sorted Clients");
@@ -22,31 +29,22 @@ const SortScreen = ({ navigation }) => {
 
   const handleLastNameAscending = () => {
     dispatch(lastNameAscending());
+    navigation.navigate("Sorted Clients");
   };
 
   return (
     <View style={styles.full}>
       <SortCard
-        style={styles.color2}
+        style={{ backgroundColor: Colors.primary }}
         iconName={faArrowAltDown}
         title={"Last Name"}
         onPress={handleLastNameDescending}
       />
       <SortCard
-        style={styles.color3}
+        style={{ backgroundColor: Colors.alt2 }}
         iconName={faArrowAltUp}
         title={"Last Name"}
         onPress={handleLastNameAscending}
-      />
-      <SortCard
-        style={styles.color}
-        iconName={faArrowAltUp}
-        title={"Last Appointment"}
-      />
-      <SortCard
-        style={styles.color1}
-        iconName={faArrowAltDown}
-        title={"City"}
       />
     </View>
   );
