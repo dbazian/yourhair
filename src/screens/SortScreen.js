@@ -41,7 +41,7 @@ const SortScreen = ({ navigation }) => {
         onPress={handleLastNameDescending}
       />
       <SortCard
-        style={{ backgroundColor: Colors.alt2 }}
+        style={{ backgroundColor: Colors.secondary }}
         iconName={faArrowAltUp}
         title={"Last Name"}
         onPress={handleLastNameAscending}

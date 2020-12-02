@@ -2,13 +2,13 @@ import React from "react";
 import { View, StyleSheet } from "react-native";
 import Colors from "../../constants/Colors";
 
-const Card = (props) => {
+const Card = props => {
   return <View style={styles.container}>{props.children}</View>;
 };
 
 const styles = StyleSheet.create({
   container: {
-    borderColor: Colors.secondary,
+    borderColor: Colors.alt,
     borderWidth: 3,
     marginVertical: 5,
     width: "100%",

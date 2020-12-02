@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { useForm, Controller } from "react-hook-form";
 import { addClient } from "../../store/actions/clientListActions";
 import Button from "../components/Button";
+import TitleText from "../components/TitleText";
 import Colors from "../../constants/Colors";
 
 const AddScreen = () => {
@@ -29,8 +30,7 @@ const AddScreen = () => {
 
   return (
     <View style={styles.full}>
-      <Text style={styles.title}>Add Client</Text>
-
+      <TitleText title="Add Client" />
       <Controller
         control={control}
         render={({ onChange, onBlur, value }) => (
@@ -163,22 +163,17 @@ const styles = StyleSheet.create({
   },
   textInput: {
     backgroundColor: Colors.primary,
-    color: Colors.secondary,
+    color: Colors.text,
     height: "9%",
     width: "90%",
     marginVertical: 10,
     borderRadius: 10,
-    borderColor: Colors.secondary,
+    borderColor: Colors.alt,
     borderWidth: 2,
-    padding: 5,
+    padding: 2,
   },
   errorText: {
-    color: "red",
-  },
-  title: {
-    color: Colors.secondary,
-    fontSize: 25,
-    marginBottom: 10,
+    color: Colors.text,
   },
 });
 

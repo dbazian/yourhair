@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View } from "react-native";
 import AutoComplete from "react-native-autocomplete-input";
 import Colors from "../../constants/Colors";
 import {
@@ -10,7 +10,6 @@ import {
 const Name = props => {
   return (
     <View style={styles.inputContainer}>
-      <Text style={styles.text}>Search By Name</Text>
       <AutoComplete
         style={[styles.formBox, props.style]}
         listStyle={styles.listStyle}
@@ -44,13 +43,13 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   formBox: {
-    backgroundColor: Colors.alt2,
-    color: Colors.primary,
+    backgroundColor: Colors.primary,
+    color: Colors.secondary,
     textAlign: "center",
     fontSize: hp("2.8%"),
     height: hp("7%"),
     width: wp("95%"),
-    borderColor: Colors.secondary,
+    borderColor: Colors.alt,
     borderWidth: 2,
   },
   listStyle: {

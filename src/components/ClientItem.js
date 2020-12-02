@@ -25,7 +25,7 @@ const ClientItem = props => {
           </View>
           <FontAwesomeIcon
             icon={showDetails ? faArrowDown : faArrowUp}
-            color={Colors.secondary}
+            color={Colors.alt}
             size={40}
             onPress={() => setShowDetails(!showDetails)}
           />

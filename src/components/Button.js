@@ -23,25 +23,25 @@ const Button = props => {
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: "white",
+    backgroundColor: Colors.primary,
     height: 50,
     width: 200,
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 10,
     marginTop: 15,
-    shadowColor: Colors.alt2,
+    shadowColor: Colors.primary,
     shadowOffset: { width: 1, height: 1 },
     shadowOpacity: 0.99,
     borderWidth: 2,
-    borderColor: Colors.primary,
+    borderColor: Colors.alt,
   },
   indicator: {
     position: "absolute",
   },
   text: {
     fontSize: 20,
-    color: Colors.primary,
+    color: Colors.text,
   },
 });
 

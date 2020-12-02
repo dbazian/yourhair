@@ -24,7 +24,7 @@ const SortStackScreen = () => {
       <SortStack.Screen
         name="Sort Clients"
         component={SortScreen}
-        options={{ headerStyle: { backgroundColor: Colors.alt2 } }}
+        options={{ headerStyle: { backgroundColor: Colors.alt } }}
       />
       <SortStack.Screen
         name="Sorted Clients"
@@ -59,7 +59,7 @@ const Navigation = () => {
         })}
         tabBarOptions={{
           activeTintColor: Colors.primary,
-          inactiveTintColor: Colors.alt2,
+          inactiveTintColor: Colors.alt,
           style: styles.tabBar,
         }}>
         <Tab.Screen name="Add" component={AddScreen} />

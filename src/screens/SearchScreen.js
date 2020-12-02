@@ -6,6 +6,7 @@ import { PulseIndicator } from "react-native-indicators";
 import Colors from "../../constants/Colors";
 import Name from "../components/Name";
 import ClientItem from "../components/ClientItem";
+import TitleText from "../components/TitleText";
 
 const SearchScreen = ({ navigation }) => {
   const clientData = useSelector(state => state.clientSort.clientList);
@@ -44,6 +45,7 @@ const SearchScreen = ({ navigation }) => {
 
   return (
     <View style={styles.full}>
+      <TitleText title="Search Clients" />
       <View style={styles.input}>
         <Name />
       </View>
@@ -77,12 +79,15 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   flatList: {
-    height: "79%",
+    height: "73%",
     width: "100%",
     borderWidth: 5,
-    borderColor: "white",
+    borderColor: Colors.alt,
     borderRadius: 10,
-    backgroundColor: Colors.alt2,
+    backgroundColor: Colors.primary,
+  },
+  text: {
+    color: Colors.text,
   },
 });
 
